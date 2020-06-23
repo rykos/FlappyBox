@@ -59,11 +59,11 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-    public void SetDefaultState()
+    public void SetDefaultState(bool gameState = false)
     {
         //Reset (position, score)
         transform.localPosition = Vector3.zero;
         GetComponent<ScoreController>().SetScore(0);
-        gameActive = true;
+        gameActive = gameState;
     }
 }

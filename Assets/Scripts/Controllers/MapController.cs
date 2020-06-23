@@ -7,6 +7,8 @@ using UnityEngine;
 public class MapController : MonoBehaviour
 {
     //0.8 ^ -3
+    public float spaceBetweenPillars;
+    public float spaceBetweenPipes;
     public GameObject Pipe;
     private Transform player;
     private List<Transform> pipes = new List<Transform>();
@@ -42,7 +44,7 @@ public class MapController : MonoBehaviour
 
     private void BuildPipe()
     {
-        Vector3 newPos = pipes.Last().position + new Vector3(UnityEngine.Random.Range(5f, 7f), 0, 0);
+        Vector3 newPos = pipes.Last().position + new Vector3(UnityEngine.Random.Range(spaceBetweenPillars, 6f), 0, 0);
         BuildPipe(new Vector3(newPos.x, UnityEngine.Random.Range(-3, -0.8f), 0));
     }
     private void BuildPipe(Vector2 pos)

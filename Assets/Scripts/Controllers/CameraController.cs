@@ -7,7 +7,7 @@ using UnityEngine.Assertions.Must;
 public class CameraController : MonoBehaviour
 {
     public Transform player;
-    private bool follow = true;
+    public Vector3 offset;
 
     private void Awake()
     {
@@ -16,10 +16,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (follow)
-        {
-            transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
-        }
+        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z) + offset;
     }
 
     private void OnPlayerDeath(object sender, EventArgs e)

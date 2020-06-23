@@ -25,15 +25,19 @@ public class UIController : MonoBehaviour
     public void PlayAgain()
     {
         //Reset game to default state
-        GameObject.Find("Player").GetComponent<PlayerController>().SetDefaultState();
         GameObject.Find("Map").GetComponent<MapController>().SetDefaultState();
+        GameObject.Find("Player").GetComponent<PlayerController>().SetDefaultState(true);
         summaryUI.SetActive(false);
         gameUI.SetActive(true);
     }
 
     public void MainMenu()
     {
-        //Redirect to main menu
+        GameObject.Find("Map").GetComponent<MapController>().SetDefaultState();
+        GameObject.Find("Player").GetComponent<PlayerController>().SetDefaultState();
+        summaryUI.SetActive(false);
+        gameUI.SetActive(false);
+        homeUI.SetActive(true);
     }
 
     private void OnPlayerDeath(object sender, EventArgs e)
