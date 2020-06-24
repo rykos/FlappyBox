@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4e6eb737e3df64fab75a12001babbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colors:
+  - {r: 0.1976986, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
   WallPrefab: {fileID: 9394612324649734, guid: 35f6e2c298d0261468c52a277f0a062a, type: 3}

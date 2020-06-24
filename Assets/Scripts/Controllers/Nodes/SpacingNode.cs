@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpacingNode : MonoBehaviour, INode
 {
+    public Color[] colors;
     public GameObject WallPrefab;
     public float Size
     {
@@ -18,6 +19,7 @@ public class SpacingNode : MonoBehaviour, INode
         var Wall = Instantiate(WallPrefab, transform);
         Wall.transform.localScale = new Vector3(_size / 2, 1, 1);
         Wall.transform.localPosition = new Vector3(_size / 2, 0, 0);
+        Wall.GetComponent<WallController>().Recolor(colors[0], colors[1]);
     }
 
     private void OnDrawGizmosSelected()

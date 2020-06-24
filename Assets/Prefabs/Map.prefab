@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d8c72238ca03640915155365448bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceBetweenPillars: 3
-  spaceBetweenPipes: 3
-  Pipe: {fileID: 59740754874809902, guid: 2f508fc88c5f73a42b140806d2df4909, type: 3}
+  SpacingNode: {fileID: 4866282646776556394, guid: 418eccb77ff703242a55e28977e21307,
+    type: 3}
+  nodes:
+  - {fileID: 5066174978512006695, guid: ce638ef2834ab094bae31762f948a416, type: 3}
+  - {fileID: 3852300264606611321, guid: c3fd847016ff84e4b9044816cd9c09a6, type: 3}
 --- !u!114 &6175163828424865910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 4655556658904565768, guid: 30008214c2508ac47bfa640f757ffb06,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4655556658904565768, guid: 30008214c2508ac47bfa640f757ffb06,
         type: 3}
