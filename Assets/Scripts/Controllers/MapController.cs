@@ -3,65 +3,61 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Controllers.Map;
 
 public class MapController : MonoBehaviour
 {
     //0.8 ^ -3
-    public float spaceBetweenPillars;
-    public float spaceBetweenPipes;
-    public GameObject Pipe;
-    private Transform player;
-    private List<Transform> pipes = new List<Transform>();
-    private bool generateMap = true; 
+    public List<GameObject> nodes;
+    private List<GameObject> _builtNodes = new List<GameObject>();
+    private Transform _player;
+    private bool _generateMap = true; 
 
     private void Awake()
     {
         PlayerController.OnDeath += OnPlayerDeath;
-        this.player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        BuildPipe(new Vector2(4, 0));
+        this._player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        BuildNewNode();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (generateMap)
+        if (_generateMap)
         {
-            if (player.position.x + 10 > pipes.Last().position.x)
+            if (_player.position.x + 20 > _builtNodes.Last().transform.position.x)
             {
-                BuildPipe();
-                if (pipes.Count > 5)
+                BuildNewNode(_builtNodes.Last().transform.position + new Vector3(50, 0));
+                if (_builtNodes.Count() > 3)
                 {
-                    Destroy(pipes[0].gameObject);
-                    pipes.RemoveAt(0);
+                    DestroyOldestNode();
                 }
             }
         }
     }
 
-    private void OnPlayerDeath(object sender, EventArgs e)
+    private void BuildNewNode(Vector2 pos = default)
     {
-        generateMap = false;
+        var newNode = Instantiate(nodes[0], transform);
+        newNode.transform.position = pos;
+        _builtNodes.Add(newNode);
+        (newNode.GetComponent<INode>()).Build(Vector2.zero, 50);
     }
 
-    private void BuildPipe()
+    private void DestroyOldestNode()
     {
-        Vector3 newPos = pipes.Last().position + new Vector3(UnityEngine.Random.Range(spaceBetweenPillars, 6f), 0, 0);
-        BuildPipe(new Vector3(newPos.x, UnityEngine.Random.Range(-3, -0.8f), 0));
+        Destroy(_builtNodes[0]);
+        _builtNodes.RemoveAt(0);
     }
-    private void BuildPipe(Vector2 pos)
+
+    private void OnPlayerDeath(object sender, EventArgs e)
     {
-        GameObject newPipe = Instantiate(Pipe, transform);
-        newPipe.transform.localPosition = pos;
-        pipes.Add(newPipe.transform);
+        _generateMap = false;
     }
 
     public void SetDefaultState()
     {
-        for (int i = pipes.Count - 1; i > -1; i--) 
-        {
-            Destroy(pipes[i].gameObject);
-            pipes.RemoveAt(i);
-        }
-        BuildPipe(new Vector2(4, 0));
-        generateMap = true;
+        _generateMap = true;
     }
+
+
 }
