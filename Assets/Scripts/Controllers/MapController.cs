@@ -37,7 +37,7 @@ public class MapController : MonoBehaviour
 
     private void BuildNewNode(Vector2 pos = default)
     {
-        var newNode = Instantiate(nodes[0], transform);
+        var newNode = Instantiate(nodes[UnityEngine.Random.Range(0, 2)], transform);
         newNode.transform.position = pos;
         _builtNodes.Add(newNode);
         (newNode.GetComponent<INode>()).Build(Vector2.zero, 50);
