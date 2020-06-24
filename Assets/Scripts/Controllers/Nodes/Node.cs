@@ -9,6 +9,7 @@ namespace Controllers.Map
 {
     public interface INode
     {
+        float Size { get; }
         void Build(Vector2 position, float size);
     }
 }

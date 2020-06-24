@@ -205,6 +205,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3852300264606611321, guid: c3fd847016ff84e4b9044816cd9c09a6,
         type: 3}
+    - target: {fileID: 6175163827161121889, guid: 8df84a4a60359404ca3dc96796a8b222,
+        type: 3}
+      propertyPath: nodes.Array.data[2]
+      value: 
+      objectReference: {fileID: 3852300264606611321, guid: c3fd847016ff84e4b9044816cd9c09a6,
+        type: 3}
+    - target: {fileID: 6175163827161121889, guid: 8df84a4a60359404ca3dc96796a8b222,
+        type: 3}
+      propertyPath: SpacingNode
+      value: 
+      objectReference: {fileID: 4866282646776556394, guid: 418eccb77ff703242a55e28977e21307,
+        type: 3}
     - target: {fileID: 6175163827161122719, guid: 8df84a4a60359404ca3dc96796a8b222,
         type: 3}
       propertyPath: m_Name
@@ -244,12 +256,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819888419}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b22308159682c5a44ae7faa5c3a2ae52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 990273215}
   offset: {x: 3, y: 0, z: 0}
 --- !u!114 &819888421
 MonoBehaviour:
@@ -347,3 +359,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &990273215 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6175163828424865907, guid: 8df84a4a60359404ca3dc96796a8b222,
+    type: 3}
+  m_PrefabInstance: {fileID: 332415506}
+  m_PrefabAsset: {fileID: 0}

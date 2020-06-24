@@ -11,6 +11,14 @@ public class PipeNode : MonoBehaviour, INode
     public float spaceBetweenPipes;//Vertical
     //Y=1 Y=-3
     private List<Transform> pipes = new List<Transform>();
+
+    public float Size
+    {
+        get
+        {
+            return _size;
+        }
+    }
     private float _size;
 
     public void Build(Vector2 position, float size)
@@ -46,5 +54,14 @@ public class PipeNode : MonoBehaviour, INode
         GameObject newPipe = Instantiate(Pipe, transform);
         newPipe.transform.localPosition = pos;
         pipes.Add(newPipe.transform);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 offset = new Vector3(0, 3.5f);
+        Debug.DrawLine(transform.position - offset, transform.position + new Vector3(_size, -3.5f));
+        Debug.DrawLine(transform.position + offset, transform.position + new Vector3(_size, 3.5f));
+        Debug.DrawLine(transform.position - offset, transform.position + offset);
+        Debug.DrawLine(transform.position + new Vector3(_size, 0) - offset, transform.position + new Vector3(_size, 0) + offset);
     }
 }
