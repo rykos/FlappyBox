@@ -15,6 +15,9 @@ public class SpacingNode : MonoBehaviour, INode
     public void Build(Vector2 position, float size)
     {
         this._size = size;
+        var Wall = Instantiate(WallPrefab, transform);
+        Wall.transform.localScale = new Vector3(_size / 2, 1, 1);
+        Wall.transform.localPosition = new Vector3(_size / 2, 0, 0);
     }
 
     private void OnDrawGizmosSelected()
