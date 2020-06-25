@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Controllers.Map;
+using System.IO;
 
 public class MapController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class MapController : MonoBehaviour
     public List<GameObject> nodes;
     //
     private List<GameObject> _builtNodes = new List<GameObject>();
+    //private Dictionary<FloatRange, GameObject> _buildNodesRanges = new Dictionary<FloatRange, GameObject>();
+    private List<FloatRange> _buildNodesRanges = new List<FloatRange>();
+    private float controllerTreshold;
     private Transform _player;
     private bool _generateMap = true;
 
@@ -25,9 +29,11 @@ public class MapController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (_generateMap)
         {
-            if (_player.position.x + 20 > _builtNodes.Last().transform.position.x)
+            //_buildNodes[0].transform.position.x => (_buildNodes[0].transform.position.x + _size) Node range
+            if (_player.position.x + 10 > _builtNodes.Last().transform.position.x)//Generate new node when player is able to see last generated node
             {
                 BuildNewNode(_builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0));
                 BuildSpacingNode();
@@ -36,6 +42,19 @@ public class MapController : MonoBehaviour
                     DestroyOldestNodes(2);
                 }
             }
+            if (_player.position.x + 8 > this.controllerTreshold)//Controller outdated, find new one
+            {
+                int index = this._buildNodesRanges.FindIndex(x => x.IsInRange(_player.position.x + 8));
+                IController newController = _builtNodes[index].GetComponent<INode>().Controller;
+                if (newController == null)
+                {
+                    index++;
+                    newController = _builtNodes[index].GetComponent<INode>().Controller;
+                };
+                PlayerController.playerController.controller = newController;
+                controllerTreshold = _buildNodesRanges[index].End;
+                Debug.Log($"Changed controller to {newController.ToString()}");
+            }
         }
     }
 
@@ -43,18 +62,22 @@ public class MapController : MonoBehaviour
     {
         var newNode = Instantiate(node ?? GetRandomNode(), transform);
         newNode.transform.position = pos;
+        float nodeSize = (size == 0) ? GetRandomSize() : size;
+        (newNode.GetComponent<INode>()).Build(Vector2.zero, nodeSize);
+        //
         _builtNodes.Add(newNode);
-        (newNode.GetComponent<INode>()).Build(Vector2.zero, (size == 0) ? GetRandomSize() : size);
+        _buildNodesRanges.Add(new FloatRange(pos.x, pos.x + nodeSize));
     }
 
     private void BuildSpacingNode()
     {
-        BuildNewNode(_builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0), this.SpacingNode, 10);
+        Vector3 pos = _builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0);
+        BuildNewNode(pos, this.SpacingNode, 10);
     }
 
     private GameObject GetRandomNode()
     {
-        return nodes[UnityEngine.Random.Range(0, 2)];
+        return nodes[UnityEngine.Random.Range(0, nodes.Count)];
     }
     private float GetRandomSize()
     {
@@ -68,6 +91,7 @@ public class MapController : MonoBehaviour
             Destroy(_builtNodes[i]);
         }
         _builtNodes.RemoveRange(0, amount);
+        _buildNodesRanges.RemoveRange(0, amount);
     }
 
     private void OnPlayerDeath(object sender, EventArgs e)
@@ -80,5 +104,31 @@ public class MapController : MonoBehaviour
         _generateMap = true;
     }
 
+}
 
+struct FloatRange
+{
+    public float Start;
+    public float End;
+    public FloatRange(float start, float end)
+    {
+        this.Start = start;
+        this.End = end;
+    }
+    /// <summary>
+    /// Return true if value is in range (exclusive)
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public bool IsInRange(float value)
+    {
+        if (value > Start && value < End)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

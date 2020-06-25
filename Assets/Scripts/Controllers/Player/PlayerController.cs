@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float PlayerHorizontalSpeed = 1;
-    public float velocity = 1;
-    public float ITime = 1;
-    public float gravity = 1;
-    private Rigidbody2D rb;
+    //public float PlayerHorizontalSpeed = 1;
+    //public float velocity = 1;
+    //public float ITime = 1;
+    //public float gravity = 1;
+    public static PlayerController playerController;
+    public Rigidbody2D rb;
     //
     public static bool gameActive = false;
     public static EventHandler OnDeath;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        controller = new PipeNodeControls(rb, transform);
+        playerController = this;
     }
 
     private void Update()
@@ -30,13 +31,7 @@ public class PlayerController : MonoBehaviour
             {
                 controller.Tap();
             }
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    Jump();
-            //}
-            //rb.velocity += new Vector2(0, -gravity*Time.deltaTime);
-            //Quaternion newQ = Quaternion.Euler(0, 0, Mathf.Clamp(rb.velocity.y * 10, -45, 45));
-            //transform.rotation = Quaternion.Lerp(transform.rotation, newQ, Time.deltaTime * ITime);
+
             ////Outside of camera view
             //if (Mathf.Abs(transform.position.y) > 3.5f)
             //{
@@ -44,14 +39,12 @@ public class PlayerController : MonoBehaviour
             //}
         }
     }
+
+
+
     private void FixedUpdate()
     {
         controller.Tick();
-    }
-
-    private void Jump()
-    {
-        rb.velocity = new Vector2(PlayerHorizontalSpeed, (Vector2.up * velocity).y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,6 +71,7 @@ public class PlayerController : MonoBehaviour
     }
 }
 
+[SerializeField]
 public static class PlayerSettings 
 {
     public static float PlayerHorizontalSpeed = 3;

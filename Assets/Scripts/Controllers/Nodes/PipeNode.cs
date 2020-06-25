@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Controllers.Map;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 
 public class PipeNode : MonoBehaviour, INode
 {
     public GameObject Pipe;//Pipe prefab
     public float spaceBetweenPillars;//Horizontal
     public float spaceBetweenPipes;//Vertical
+    public NodeSettings settings;
     //
+    IController INode.Controller { get { return new PipeNodeControls(settings); } }
     private List<Transform> pipes = new List<Transform>();
 
     public float Size
@@ -19,6 +22,8 @@ public class PipeNode : MonoBehaviour, INode
             return _size;
         }
     }
+
+
     private float _size;
 
     public void Build(Vector2 position, float size)
@@ -40,7 +45,6 @@ public class PipeNode : MonoBehaviour, INode
     {
         if (pipes.Count == 0) BuildPipe(Vector2.zero);
         Vector3 newPos = pipes.Last().localPosition + new Vector3(Random.Range(spaceBetweenPillars, 6f), 0, 0);
-        Debug.Log(newPos.x);
         if (newPos.x + 1 > _size + transform.position.x)
         {
             Debug.Log($"{newPos.x} > {transform.position.x}");

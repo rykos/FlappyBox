@@ -46,3 +46,6 @@ MonoBehaviour:
   Pipe: {fileID: 59740754874809902, guid: 2f508fc88c5f73a42b140806d2df4909, type: 3}
   spaceBetweenPillars: 3
   spaceBetweenPipes: 3
+  settings:
+    PlayerHorizontalSpeed: 1
+    PlayerVerticalSpeed: 9.8

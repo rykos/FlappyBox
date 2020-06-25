@@ -7,8 +7,9 @@ using System.Linq;
 public class GravitySwitchNode : MonoBehaviour, INode
 {
     public GameObject WallPrefab;
-
     private List<GameObject> builtWalls = new List<GameObject>();
+    [SerializeField]
+    public NodeSettings settings;
 
     public float Size
     {
@@ -18,6 +19,8 @@ public class GravitySwitchNode : MonoBehaviour, INode
         }
     }
     private float _size;
+    public IController Controller { get { return new GravitySwitchNodeControls(settings); } }
+
 
     public void Build(Vector2 position, float size)
     {
@@ -43,10 +46,5 @@ public class GravitySwitchNode : MonoBehaviour, INode
         Debug.DrawLine(transform.position + offset, transform.position + new Vector3(_size, 3.5f));
         Debug.DrawLine(transform.position - offset, transform.position + offset);
         Debug.DrawLine(transform.position + new Vector3(_size, 0) - offset, transform.position + new Vector3(_size, 0) + offset);
-    }
-
-    private void PlayerTap()
-    {
-        
     }
 }

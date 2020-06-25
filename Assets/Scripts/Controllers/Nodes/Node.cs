@@ -10,6 +10,14 @@ namespace Controllers.Map
     public interface INode
     {
         float Size { get; }
+        IController Controller { get; }
         void Build(Vector2 position, float size);
+    }
+
+    [System.Serializable]
+    public class NodeSettings 
+    {
+        public float PlayerHorizontalSpeed;
+        public float PlayerVerticalSpeed;
     }
 }

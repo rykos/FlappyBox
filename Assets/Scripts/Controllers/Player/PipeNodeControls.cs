@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Controllers.Map;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +7,12 @@ public class PipeNodeControls : IController
 {
     private Rigidbody2D rb;
     private Transform transform;
+    private NodeSettings settings;
 
-    public PipeNodeControls(Rigidbody2D rb, Transform transform)
-    {
-        this.rb = rb;
-        this.transform = transform;
+    public PipeNodeControls(NodeSettings settings) {
+        this.rb = PlayerController.playerController.rb;
+        this.transform = PlayerController.playerController.transform;
+        this.settings = settings;
     }
 
     public void Tap()

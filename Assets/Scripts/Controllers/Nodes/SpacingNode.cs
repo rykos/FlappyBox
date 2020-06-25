@@ -12,6 +12,7 @@ public class SpacingNode : MonoBehaviour, INode
         get { return this._size; }
     }
     private float _size;
+    public IController Controller { get { return null; } }//Do not override player controller
 
     public void Build(Vector2 position, float size)
     {
