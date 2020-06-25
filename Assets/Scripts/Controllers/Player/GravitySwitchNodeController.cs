@@ -1,6 +1,7 @@
 ﻿using Controllers.Map;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class GravitySwitchNodeControls : IController
@@ -8,27 +9,26 @@ public class GravitySwitchNodeControls : IController
     private Rigidbody2D rb;
     private Transform transform;
     private NodeSettings settings;
+    //
+    private float gravity = 1;
 
-    public GravitySwitchNodeControls(Rigidbody2D rb, Transform transform)
-    {
-        this.rb = rb;
-        this.transform = transform;
-    }
     public GravitySwitchNodeControls(NodeSettings settings)
     {
         this.rb = PlayerController.playerController.rb;
         this.transform = PlayerController.playerController.transform;
         this.settings = settings;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void Tap()
     {
-        rb.velocity += new Vector2(0, settings.PlayerVerticalSpeed);
+        //rb.velocity += new Vector2(0, settings.PlayerVerticalSpeed);
+        gravity *= -1;
     }
 
     public void Tick()
     {
-        rb.velocity *= 0.98f;
-        transform.position += new Vector3(settings.PlayerHorizontalSpeed, 0, 0);
+        rb.velocity = new Vector2(settings.PlayerHorizontalSpeed, rb.velocity.y);//Horizontal
+        rb.velocity += new Vector2(0, settings.PlayerVerticalSpeed * gravity * Time.deltaTime);//Gravity
     }
 }
