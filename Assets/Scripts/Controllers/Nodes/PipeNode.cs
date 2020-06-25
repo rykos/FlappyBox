@@ -9,7 +9,7 @@ public class PipeNode : MonoBehaviour, INode
     public GameObject Pipe;//Pipe prefab
     public float spaceBetweenPillars;//Horizontal
     public float spaceBetweenPipes;//Vertical
-    //Y=1 Y=-3
+    //
     private List<Transform> pipes = new List<Transform>();
 
     public float Size

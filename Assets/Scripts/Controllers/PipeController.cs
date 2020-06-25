@@ -9,6 +9,9 @@ public class PipeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<ScoreController>().AddScore();
+        if (collision.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<ScoreController>().AddScore();
+        }
     }
 }

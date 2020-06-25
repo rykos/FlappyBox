@@ -44,4 +44,9 @@ public class GravitySwitchNode : MonoBehaviour, INode
         Debug.DrawLine(transform.position - offset, transform.position + offset);
         Debug.DrawLine(transform.position + new Vector3(_size, 0) - offset, transform.position + new Vector3(_size, 0) + offset);
     }
+
+    private void PlayerTap()
+    {
+        
+    }
 }
