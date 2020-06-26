@@ -49,7 +49,7 @@ public class MapController : MonoBehaviour
                     index++;
                     newController = _builtNodes[index].GetComponent<INode>().Controller;
                 };
-                PlayerController.playerController.controller = newController;
+                PlayerController.playerController.Controller = newController;
                 controllerTreshold = _buildNodesRanges[index].End;
             }
         }

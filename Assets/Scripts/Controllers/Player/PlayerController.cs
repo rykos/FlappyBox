@@ -6,16 +6,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //public float PlayerHorizontalSpeed = 1;
-    //public float velocity = 1;
-    //public float ITime = 1;
-    //public float gravity = 1;
     public static PlayerController playerController;
     public Rigidbody2D rb;
     //
     public static bool gameActive = false;
     public static EventHandler OnDeath;
-    public IController controller;
+    public IController Controller
+    {
+        get { return this._controller; }
+        set
+        {
+            this._controller = value;
+            OnControllerChange();
+        }
+    }
+    private IController _controller;
 
     private void Awake()
     {
@@ -29,7 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                controller.Tap();
+                Controller.Tap();
             }
 
             ////Outside of camera view
@@ -44,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Tick();
+        Controller.Tick();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,6 +67,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
+    private void OnControllerChange()
+    {
+        rb.velocity = Vector2.zero;
+        transform.rotation = Quaternion.Euler(1, 1, 1);
+    }
+
     public void SetDefaultState(bool gameState = false)
     {
         //Reset (position, score)
@@ -72,7 +83,7 @@ public class PlayerController : MonoBehaviour
 }
 
 [SerializeField]
-public static class PlayerSettings 
+public static class PlayerSettings
 {
     public static float PlayerHorizontalSpeed = 3;
     public static float velocity = 5;

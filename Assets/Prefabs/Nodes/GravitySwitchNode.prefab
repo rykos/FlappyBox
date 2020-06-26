@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WallPrefab: {fileID: 9394612324649734, guid: 35f6e2c298d0261468c52a277f0a062a, type: 3}
   settings:
-    PlayerHorizontalSpeed: 15
+    PlayerHorizontalSpeed: 10
     PlayerVerticalSpeed: 50
   ObstaclePrefabs:
   - {fileID: 6262167513971880674, guid: db2aae82312b52241a139980b8ccd3d8, type: 3}

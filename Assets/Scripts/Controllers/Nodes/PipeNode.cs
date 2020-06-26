@@ -22,8 +22,6 @@ public class PipeNode : MonoBehaviour, INode
             return _size;
         }
     }
-
-
     private float _size;
 
     public void Build(Vector2 position, float size)
@@ -47,10 +45,9 @@ public class PipeNode : MonoBehaviour, INode
         Vector3 newPos = pipes.Last().localPosition + new Vector3(Random.Range(spaceBetweenPillars, 6f), 0, 0);
         if (newPos.x + 1 > _size + transform.position.x)
         {
-            Debug.Log($"{newPos.x} > {transform.position.x}");
             return false;
         }
-        BuildPipe(new Vector3(newPos.x, UnityEngine.Random.Range(-3, 1), 0));
+        BuildPipe(new Vector3(newPos.x, UnityEngine.Random.Range(-3f, 1f), 0));
         return true;
     }
     private void BuildPipe(Vector2 pos)
