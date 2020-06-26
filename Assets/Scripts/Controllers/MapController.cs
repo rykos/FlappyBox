@@ -22,8 +22,8 @@ public class MapController : MonoBehaviour
     {
         PlayerController.OnDeath += OnPlayerDeath;
         this._player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        BuildNewNode();
         BuildSpacingNode();
+        BuildNewNode(new Vector2(10, 0));
     }
 
     private void FixedUpdate()
@@ -33,16 +33,16 @@ public class MapController : MonoBehaviour
         {
             if (_player.position.x + 10 > _builtNodes.Last().transform.position.x)//Generate new node when player is able to see last generated node
             {
-                BuildNewNode(_builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0));
                 BuildSpacingNode();
+                BuildNewNode(_builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0));
                 if (_builtNodes.Count() > 4)
                 {
                     DestroyOldestNodes(2);
                 }
             }
-            if (_player.position.x + 8 > this.controllerTreshold)//Controller outdated, find new one
+            if (_player.position.x > this.controllerTreshold)//Controller outdated, find new one
             {
-                int index = this._buildNodesRanges.FindIndex(x => x.IsInRange(_player.position.x + 8));
+                int index = this._buildNodesRanges.FindIndex(x => x.IsInRange(_player.position.x));
                 IController newController = _builtNodes[index].GetComponent<INode>().Controller;
                 if (newController == null)
                 {
@@ -68,7 +68,15 @@ public class MapController : MonoBehaviour
 
     private void BuildSpacingNode()
     {
-        Vector3 pos = _builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0);
+        Vector3 pos;
+        if (_builtNodes.Count == 0)
+        {
+            pos = Vector2.zero;
+        }
+        else
+        {
+            pos = _builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0);
+        }
         BuildNewNode(pos, this.SpacingNode, 10);
     }
 

@@ -53,7 +53,8 @@ public class GravitySwitchNode : MonoBehaviour, INode
     private void BuildObstacleAt(Vector2 pos)
     {
         GameObject newObstacle = Instantiate(RandomObstacle(), transform);
-        newObstacle.transform.localPosition = new Vector2(pos.x, (Random.Range(0, 2) * 2 - 1) * Random.Range(2.5f, 4f));
+        newObstacle.transform.localPosition = new Vector3(pos.x, (Random.Range(0, 2) * 2 - 1) * Random.Range(2.5f, 4f), 10);
+        newObstacle.GetComponent<ColorController>().SetColor(new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f)));
         builtObstacles.Add(newObstacle.transform);
     }
 
