@@ -13,7 +13,6 @@ public class MapController : MonoBehaviour
     public List<GameObject> nodes;
     //
     private List<GameObject> _builtNodes = new List<GameObject>();
-    //private Dictionary<FloatRange, GameObject> _buildNodesRanges = new Dictionary<FloatRange, GameObject>();
     private List<FloatRange> _buildNodesRanges = new List<FloatRange>();
     private float controllerTreshold;
     private Transform _player;
@@ -32,7 +31,6 @@ public class MapController : MonoBehaviour
 
         if (_generateMap)
         {
-            //_buildNodes[0].transform.position.x => (_buildNodes[0].transform.position.x + _size) Node range
             if (_player.position.x + 10 > _builtNodes.Last().transform.position.x)//Generate new node when player is able to see last generated node
             {
                 BuildNewNode(_builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0));
@@ -53,7 +51,6 @@ public class MapController : MonoBehaviour
                 };
                 PlayerController.playerController.controller = newController;
                 controllerTreshold = _buildNodesRanges[index].End;
-                Debug.Log($"Changed controller to {newController.ToString()}");
             }
         }
     }

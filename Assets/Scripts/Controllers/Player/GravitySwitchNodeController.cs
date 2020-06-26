@@ -29,6 +29,6 @@ public class GravitySwitchNodeControls : IController
     public void Tick()
     {
         rb.velocity = new Vector2(settings.PlayerHorizontalSpeed, rb.velocity.y);//Horizontal
-        rb.velocity += new Vector2(0, settings.PlayerVerticalSpeed * gravity * Time.deltaTime);//Gravity
+        rb.velocity += new Vector2(0, settings.PlayerVerticalSpeed * -gravity * Time.deltaTime);//Gravity
     }
 }
