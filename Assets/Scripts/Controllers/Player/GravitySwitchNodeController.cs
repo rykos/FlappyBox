@@ -20,6 +20,16 @@ public class GravitySwitchNodeControls : IController
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    public void Hold()
+    {
+        
+    }
+
+    public void Release()
+    {
+        
+    }
+
     public void Tap()
     {
         //rb.velocity += new Vector2(0, settings.PlayerVerticalSpeed);

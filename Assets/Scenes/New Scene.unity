@@ -462,14 +462,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1889922149}
     m_Modifications:
-    - target: {fileID: 1935882772, guid: 30008214c2508ac47bfa640f757ffb06, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1935882772, guid: 30008214c2508ac47bfa640f757ffb06, type: 3}
-      propertyPath: m_Interpolate
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4655556658904565768, guid: 30008214c2508ac47bfa640f757ffb06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2238,7 +2230,7 @@ PrefabInstance:
     - target: {fileID: 6175163827161121889, guid: 8df84a4a60359404ca3dc96796a8b222,
         type: 3}
       propertyPath: nodes.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6175163827161121889, guid: 8df84a4a60359404ca3dc96796a8b222,
         type: 3}
@@ -2249,7 +2241,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nodes.Array.data[0]
       value: 
-      objectReference: {fileID: 3852300264606611321, guid: c3fd847016ff84e4b9044816cd9c09a6,
+      objectReference: {fileID: 5066174978512006695, guid: ce638ef2834ab094bae31762f948a416,
         type: 3}
     - target: {fileID: 6175163827161121889, guid: 8df84a4a60359404ca3dc96796a8b222,
         type: 3}

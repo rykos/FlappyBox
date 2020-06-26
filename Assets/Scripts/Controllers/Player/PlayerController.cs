@@ -36,6 +36,14 @@ public class PlayerController : MonoBehaviour
             {
                 Controller.Tap();
             }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                Controller.Release();
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                Controller.Hold();
+            }
 
             ////Outside of camera view
             //if (Mathf.Abs(transform.position.y) > 3.5f)
@@ -45,11 +53,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
     private void FixedUpdate()
     {
-        Controller.Tick();
+        if (gameActive)
+        {
+            Controller.Tick();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

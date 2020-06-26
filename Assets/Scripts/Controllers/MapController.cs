@@ -28,7 +28,6 @@ public class MapController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (_generateMap)
         {
             if (_player.position.x + 10 > _builtNodes.Last().transform.position.x)//Generate new node when player is able to see last generated node
