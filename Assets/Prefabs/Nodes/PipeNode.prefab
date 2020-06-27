@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pipe: {fileID: 59740754874809902, guid: 2f508fc88c5f73a42b140806d2df4909, type: 3}
-  spaceBetweenPillars: 3
+  spaceBetweenPillars: 5
   spaceBetweenPipes: 3
   settings:
-    PlayerHorizontalSpeed: 1
-    PlayerVerticalSpeed: 9.8
+    PlayerHorizontalSpeed: 4
+    PlayerVerticalSpeed: 14

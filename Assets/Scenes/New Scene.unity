@@ -833,12 +833,12 @@ PrefabInstance:
     - target: {fileID: 3262532897990174795, guid: 271fb492a3c043b40939e7447bffce09,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3262532897990174795, guid: 271fb492a3c043b40939e7447bffce09,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3262532897990174795, guid: 271fb492a3c043b40939e7447bffce09,
         type: 3}
@@ -1082,12 +1082,12 @@ PrefabInstance:
     - target: {fileID: 4781888617189139132, guid: c031d2a78ba718b49b44d263cf938916,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4781888617189139132, guid: c031d2a78ba718b49b44d263cf938916,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4781888617189139132, guid: c031d2a78ba718b49b44d263cf938916,
         type: 3}
@@ -1281,12 +1281,12 @@ PrefabInstance:
     - target: {fileID: 4829484097027024007, guid: 84a7ee5bd2bac044f96ef84b74be15b6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4829484097027024007, guid: 84a7ee5bd2bac044f96ef84b74be15b6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4829484097027024007, guid: 84a7ee5bd2bac044f96ef84b74be15b6,
         type: 3}
@@ -1606,12 +1606,12 @@ PrefabInstance:
     - target: {fileID: 8719413590010145095, guid: bc22e66802d956e4e96595048f2d1c82,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8719413590010145095, guid: bc22e66802d956e4e96595048f2d1c82,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8719413590010145095, guid: bc22e66802d956e4e96595048f2d1c82,
         type: 3}

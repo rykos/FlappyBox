@@ -33,7 +33,7 @@ public class PipeNodeControls : IController
             else
             {
                 dashing = true;
-                rb.velocity = new Vector2(PlayerSettings.PlayerHorizontalSpeed * 2f, 0);
+                rb.velocity = new Vector2(this.settings.PlayerHorizontalSpeed * 2f, 0);
             }
         }
     }
@@ -58,7 +58,7 @@ public class PipeNodeControls : IController
         if (!dashing)
         {
             DecreaseCD();
-            rb.velocity = new Vector2(PlayerSettings.PlayerHorizontalSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(this.settings.PlayerHorizontalSpeed, rb.velocity.y);
             rb.velocity += new Vector2(0, -PlayerSettings.gravity * Time.deltaTime);
         }
         Quaternion newQ = Quaternion.Euler(0, 0, Mathf.Clamp(rb.velocity.y * 10, -45, 45));
