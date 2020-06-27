@@ -46,10 +46,10 @@ public class PlayerController : MonoBehaviour
             }
 
             ////Outside of camera view
-            //if (Mathf.Abs(transform.position.y) > 3.5f)
-            //{
-            //    Die();
-            //}
+            if (Mathf.Abs(transform.position.y) > 4)
+            {
+                Die();
+            }
         }
     }
 
