@@ -9,6 +9,15 @@ public class ScoreController : MonoBehaviour
     private int _score = 0;
     public static event EventHandler<int> ScoreChanged;
 
+    private void FixedUpdate()
+    {
+        int newScore = ((int)transform.position.x / 10);
+        if (newScore > this._score)
+        {
+            SetScore(newScore);
+        }
+    }
+
     public int GetScore
     {
         get

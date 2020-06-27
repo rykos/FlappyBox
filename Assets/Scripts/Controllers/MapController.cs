@@ -14,7 +14,7 @@ public class MapController : MonoBehaviour
     //
     private List<GameObject> _builtNodes = new List<GameObject>();
     private List<FloatRange> _buildNodesRanges = new List<FloatRange>();
-    private float controllerTreshold;
+    private float _controllerTreshold;
     private Transform _player;
     private bool _generateMap = true;
 
@@ -39,7 +39,7 @@ public class MapController : MonoBehaviour
                     DestroyOldestNodes(2);
                 }
             }
-            if (_player.position.x > this.controllerTreshold)//Controller outdated, find new one
+            if (_player.position.x > this._controllerTreshold)//Controller outdated, find new one
             {
                 int index = this._buildNodesRanges.FindIndex(x => x.IsInRange(_player.position.x));
                 IController newController = _builtNodes[index].GetComponent<INode>().Controller;
@@ -49,7 +49,7 @@ public class MapController : MonoBehaviour
                     newController = _builtNodes[index].GetComponent<INode>().Controller;
                 };
                 PlayerController.playerController.Controller = newController;
-                controllerTreshold = _buildNodesRanges[index].End;
+                _controllerTreshold = _buildNodesRanges[index].End;
             }
         }
     }
