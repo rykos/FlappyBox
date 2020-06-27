@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerModel PlayerModel;
     public static PlayerController playerController;
     public Rigidbody2D rb;
     //
@@ -74,12 +75,13 @@ public class PlayerController : MonoBehaviour
         OnDeath.Invoke(this, EventArgs.Empty);
         gameActive = false;
         rb.velocity = Vector2.zero;
+        GetComponent<ScoreController>().UpdateBestScore();
     }
 
     private void OnControllerChange()
     {
         rb.velocity = Vector2.zero;
-        transform.rotation = Quaternion.Euler(1, 1, 1);
+        transform.rotation = Quaternion.Euler(1, 1, 0);
     }
 
     public void SetDefaultState(bool gameState = false)

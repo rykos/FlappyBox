@@ -5,7 +5,10 @@ using TMPro;
 
 public class SummaryUIController : MonoBehaviour
 {
-    public TextMeshProUGUI scoreTMP;
+    [SerializeField]
+    private TextMeshProUGUI scoreTMP;
+    [SerializeField]
+    private TextMeshProUGUI bestScoreTMP;
 
     private void OnEnable()
     {
@@ -14,6 +17,7 @@ public class SummaryUIController : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        scoreTMP.text = GameObject.FindGameObjectWithTag("Player").GetComponent<ScoreController>().GetScore.ToString();
+        scoreTMP.text = PlayerController.playerController.gameObject.GetComponent<ScoreController>().GetScore.ToString();
+        bestScoreTMP.text = PlayerController.PlayerModel.BestScore.ToString();
     }
 }

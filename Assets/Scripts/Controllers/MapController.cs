@@ -22,6 +22,11 @@ public class MapController : MonoBehaviour
     {
         PlayerController.OnDeath += OnPlayerDeath;
         this._player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        BuildBeggining();
+    }
+
+    private void BuildBeggining()
+    {
         BuildSpacingNode();
         BuildNewNode(new Vector2(10, 0));
     }
@@ -105,6 +110,9 @@ public class MapController : MonoBehaviour
 
     public void SetDefaultState()
     {
+        DestroyOldestNodes(_builtNodes.Count);
+        BuildBeggining();
+        _controllerTreshold = 0;
         _generateMap = true;
     }
 

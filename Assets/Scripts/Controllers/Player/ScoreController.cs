@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
+using TMPro;
 using UnityEngine;
 
 public class ScoreController : MonoBehaviour
@@ -35,6 +35,14 @@ public class ScoreController : MonoBehaviour
     {
         _score = val;
         OnScoreChanged(val);
+    }
+
+    public void UpdateBestScore()
+    {
+        if (_score > PlayerController.PlayerModel.BestScore)
+        {
+            PlayerController.PlayerModel.BestScore = (uint)_score;
+        }
     }
 
     protected virtual void OnScoreChanged(int x)
