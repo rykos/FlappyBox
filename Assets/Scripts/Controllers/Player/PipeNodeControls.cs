@@ -59,7 +59,7 @@ public class PipeNodeControls : IController
         {
             DecreaseCD();
             rb.velocity = new Vector2(this.settings.PlayerHorizontalSpeed, rb.velocity.y);
-            rb.velocity += new Vector2(0, -PlayerSettings.gravity * Time.deltaTime);
+            rb.velocity += new Vector2(0, -settings.PlayerVerticalSpeed * Time.deltaTime);
         }
         Quaternion newQ = Quaternion.Euler(0, 0, Mathf.Clamp(rb.velocity.y * 10, -45, 45));
         transform.rotation = Quaternion.Lerp(transform.rotation, newQ, Time.deltaTime * PlayerSettings.ITime);

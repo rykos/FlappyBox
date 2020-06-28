@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: PuppyBox
   productName: Flappy Bird
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -167,7 +167,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.Puppybox.FlappyBird
   buildNumber: {}
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -244,15 +244,15 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/_KEYS_/user.keystore
+  AndroidKeyaliasName: fastboxkey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -675,6 +675,7 @@ PlayerSettings:
     Standalone: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel:
+    Android: 1
     Standalone: 3
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0

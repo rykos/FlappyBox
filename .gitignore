@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 .collabignore
 Assets/TP
+Assets/GooglePlayGames
+Assets/Plugins
+Assets/ExternalDependencyManager
