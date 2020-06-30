@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
     {
         DisableAll();
         gameUI.SetActive(true);
-        PlayerController.gameActive = true;
+        GameObject.Find("Player").GetComponent<PlayerController>().SetDefaultState(true);
     }
 
     public void PlayAgain()

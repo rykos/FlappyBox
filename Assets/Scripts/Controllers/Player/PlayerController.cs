@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     //
     public static bool gameActive = false;
+    private bool gameStarted = false;
     public static EventHandler OnDeath;
     public IController Controller
     {
@@ -31,7 +32,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (gameActive)
+        if (!gameActive) return;
+        if (gameStarted)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -45,18 +47,24 @@ public class PlayerController : MonoBehaviour
             {
                 Controller.Hold();
             }
-
             ////Outside of camera view
             if (Mathf.Abs(transform.position.y) > 4)
             {
                 Die();
             }
         }
+        else//
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                gameStarted = true;
+                Controller.Tap();
+            }
+        }
     }
-
     private void FixedUpdate()
     {
-        if (gameActive)
+        if (gameStarted)
         {
             Controller.Tick();
         }
@@ -88,8 +96,12 @@ public class PlayerController : MonoBehaviour
     {
         //Reset (position, score)
         transform.localPosition = Vector3.zero;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
+        rb.rotation = 0;
         GetComponent<ScoreController>().SetScore(0);
         gameActive = gameState;
+        gameStarted = false;
     }
 }
 

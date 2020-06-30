@@ -27,7 +27,7 @@ public class MapController : MonoBehaviour
 
     private void BuildBeggining()
     {
-        BuildSpacingNode();
+        BuildSpacingNode(20);
         BuildNewNode(new Vector2(10, 0));
     }
 
@@ -70,18 +70,18 @@ public class MapController : MonoBehaviour
         _buildNodesRanges.Add(new FloatRange(pos.x, pos.x + nodeSize));
     }
 
-    private void BuildSpacingNode()
+    private void BuildSpacingNode(float size = 10)
     {
         Vector3 pos;
         if (_builtNodes.Count == 0)
         {
-            pos = Vector2.zero;
+            pos = new Vector2(-10, 0);
         }
         else
         {
             pos = _builtNodes.Last().transform.position + new Vector3(_builtNodes.Last().GetComponent<INode>().Size, 0, 0);
         }
-        BuildNewNode(pos, this.SpacingNode, 10);
+        BuildNewNode(pos, this.SpacingNode, size);
     }
 
     private GameObject GetRandomNode()
